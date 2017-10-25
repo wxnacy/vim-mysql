@@ -35,7 +35,7 @@ echo 'export MYSQL_LOCAL_PASSWORD=your_local_password' >> ~/.bash_profile
 echo 'export MYSQL_LOCAL_HOST=your_local_host' >> ~/.bash_profile
 source ~/.bash_profile
 ```
-这样可以配置 ***local***环境的 Mysql 信息，如果需要 ***prod*** 环境
+这样可以配置 ***local*** 环境的 Mysql 信息，如果需要 ***prod*** 环境
 可以继续配置 `MYSQL_PROD_USER, MYSQL_PROD_PASSWORD, MYSQL_PROD_HOST`
 
 ## 使用
