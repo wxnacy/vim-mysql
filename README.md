@@ -7,6 +7,7 @@ mysql.vim 是可以在 Vim 中快速运行 Mysql 命令的插件
 ## 截图
 ![截图](vim-mysql.gif)
 ## 安装
+需要类 Unix 系统，并且安装 Mysql
 ### Pathogen
 ```bash
 $ cd ~/.vim/bundle
