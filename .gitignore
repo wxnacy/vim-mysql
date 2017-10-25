@@ -1,3 +1,5 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Python template
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -20,7 +22,6 @@ lib64/
 parts/
 sdist/
 var/
-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -43,7 +44,7 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
-*.cover
+*,cover
 .hypothesis/
 
 # Translations
@@ -76,26 +77,49 @@ target/
 # celery beat schedule file
 celerybeat-schedule
 
-# SageMath parsed files
-*.sage.py
-
 # dotenv
 .env
 
 # virtualenv
-.venv
+.venv/
 venv/
 ENV/
 
+
+# add by wenxiaoning begin
+.idea/
+.npmignore
+.serverless/
+node_modules/
+*/.serverless/
+*/node_modules/
+*/.cache/
+*/local_config.py
+.project
+*.swp
+# add by wenxiaoning end
+
+
 # Spyder project settings
 .spyderproject
-.spyproject
 
 # Rope project settings
 .ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
+*.retry
+.idea/
+.npmignore
+.serverless/
+node_modules/
+*/.serverless/
+*/node_modules/
+*/.cache/
+*/local_config.py
+*/local_config.py
+metrics.flask.log
+*.out
+*/*_temp/
+*/db.json
+.DS_Store
+*/.DS_Store
+*/output.txt
+shells/tmux/resurrect/*
