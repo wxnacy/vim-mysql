@@ -1,5 +1,7 @@
 # mysql.vim
 
+mysql.vim 是可以在 Vim 中快速运行 Mysql 命令的插件
+
 <!-- more -->
 <!-- toc -->
 ## 截图
