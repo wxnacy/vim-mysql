@@ -1,7 +1,9 @@
-# vim-mysql
+# mysql.vim
 
 <!-- more -->
 <!-- toc -->
+## 截图
+![截图](vim-mysql.gif)
 ## 安装
 ### Pathogen
 ```bash
