@@ -3,7 +3,7 @@ import os
 import json
 import vim
 import commands
-def run(env,db_name, sql):
+def run(env, sql):
     cur_buf = vim.current.buffer
     if 'prod' in str(cur_buf):
         env = 'prod'
@@ -11,8 +11,9 @@ def run(env,db_name, sql):
     sql = sql.strip("'")
     sql = sql.replace('`', '\`')
     sql = sql.replace("'\''", "'")
-    cmd = 'mysql_run {} "use {};\n{}"'.format(env, db_name, sql)
+    cmd = 'mysql_run {} "{}"'.format(env, sql)
     s, msg = commands.getstatusoutput(cmd)
+    
     show_list = msg.split('\n')[15:-3]
     show_msg = '\n'.join(show_list)
 
@@ -66,25 +67,15 @@ endfunction
 function! RunSqlVisual(env)
     " echo s:GetVisualSelection()
     let l:vm = visualmode()
-    let b:db_name = g:mysql_local_db_name
-    if a:env ==# 'prod'
-        let b:db_name = g:mysql_prod_db_name
-    endif
     normal! `<v`>y
     let b:sql = @@
     let b:sql = shellescape(b:sql)
-    silent exec('py run("'. a:env . '","' . b:db_name .  '","' . b:sql . '")')
+    silent exec('py run("'. a:env . '","' . b:sql . '")')
 endfunction
 
 function! RunSqlLine(env)
-    let b:db_name = g:mysql_local_db_name
-    if a:env ==# 'prod'
-        let b:db_name = g:mysql_prod_db_name
-    endif
     let b:sql = getline(line('.'))
-    " let b:sql = shellescape(b:sql)
-    exec('py run("'. a:env . '","' . b:db_name .  '","' . b:sql . '")')
-    " exec('py run("'. a:env . '","' . b:db_name .  '","' . b:sql . '")')
+    exec('py run("'. a:env . '","' . b:sql . '")')
 endfunction
 
 
@@ -92,8 +83,6 @@ endfunction
 
 " vnoremap <buffer> <leader>r <delete><delete><delete><delete><delete>:call RunVisual()<cr>
 " autocmd FileType sql nnoremap <buffer> <leader>r :call RunLine()<cr>
-let g:mysql_local_db_name = 'tmddev'
-let g:mysql_prod_db_name = 'tmdprd'
 
 vnoremap <leader>rs :<c-u>call RunSqlVisual('local')<cr>
 vnoremap <leader>rsp :<c-u>call RunSqlVisual('prod')<cr>

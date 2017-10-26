@@ -36,10 +36,11 @@ $ ./install.sh
 echo 'export MYSQL_LOCAL_USER=your_local_user' >> ~/.bash_profile
 echo 'export MYSQL_LOCAL_PASSWORD=your_local_password' >> ~/.bash_profile
 echo 'export MYSQL_LOCAL_HOST=your_local_host' >> ~/.bash_profile
+echo 'export MYSQL_LOCAL_DB=your_local_db' >> ~/.bash_profile
 source ~/.bash_profile
 ```
 这样可以配置 ***local*** 环境的 Mysql 信息，如果需要 ***prod*** 环境
-可以继续配置 `MYSQL_PROD_USER, MYSQL_PROD_PASSWORD, MYSQL_PROD_HOST`
+可以继续配置 `MYSQL_PROD_USER, MYSQL_PROD_PASSWORD, MYSQL_PROD_HOST, MYSQL_LOCAL_DB`
 
 ## 使用
 ```bash

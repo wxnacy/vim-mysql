@@ -13,17 +13,22 @@ if { $ENV == "local" } {
     set name $env(MYSQL_LOCAL_USER)
     set password $env(MYSQL_LOCAL_PASSWORD)
     set host $env(MYSQL_LOCAL_HOST)
+    set db $env(MYSQL_LOCAL_DB)
 }
 if { $ENV == "prod" } {
     set name $env(MYSQL_PROD_USER)
     set password $env(MYSQL_PROD_PASSWORD)
     set host $env(MYSQL_PROD_HOST)
+    set db $env(MYSQL_PROD_DB)
 }
 
-spawn sh -c "mysql -u$name -p -h ${host} --tee=/data/log/mysql/`date +%Y-%m-%d`.log"
+# spawn sh -c "mysql -u$name -p -h ${host} -A --tee=/data/log/mysql/`date +%Y-%m-%d`.log"
+spawn sh -c "mysql -u$name -p -h ${host} -A --tee=~/.mysql_result"
 expect "*assword:*"
 send "$password\r"
 expect "*>"
-send "$sql;\r"
+send "use $db;\r"
+expect "*>"
+send "$sql\r"
 send "exit;\r"
 interact
