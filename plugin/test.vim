@@ -26,4 +26,4 @@ endfunction
 " command! -nargs=0 Test call Test()
 " command! -nargs=0 Gv call Get_visual_selection()
 " command! -nargs=0 GV call GetVisualSelection()
-call s:Test()
+" call s:Test()
