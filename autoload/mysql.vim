@@ -5,12 +5,11 @@ import vim
 import commands
 def run(env, sql):
     cur_buf = vim.current.buffer
-    if 'prod' in str(cur_buf):
-        env = 'prod'
 
     sql = sql.strip("'")
     sql = sql.replace('`', '\`')
     sql = sql.replace("'\''", "'")
+    sql = '{};'.format(sql)
     cmd = 'mysql_run {} "{}"'.format(env, sql)
     s, msg = commands.getstatusoutput(cmd)
 
